@@ -91,8 +91,9 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             df2.dateStyle = .ShortStyle
             df2.timeStyle = .ShortStyle
             return df2.stringFromDate(date)
+        } else {
+            return string
         }
-        return ""
     }
     
     private func dateFromTrimmedDateString(string:String) -> NSDate {
