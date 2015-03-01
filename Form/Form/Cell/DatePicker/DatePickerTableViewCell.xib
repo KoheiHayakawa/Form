@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="datePickerCell" rowHeight="216" id="Wa8-uo-qUV" userLabel="datePickerCell" customClass="DatePickerTableViewCell" customModule="Form" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="216"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wa8-uo-qUV" id="am2-zg-DeQ">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <datePicker tag="98" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="fZC-BW-f2r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="216"/>
+                        <date key="date" timeIntervalSinceReferenceDate="444924088.28887397">
+                            <!--2015-02-06 14:01:28 +0000-->
+                        </date>
+                    </datePicker>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="fZC-BW-f2r" secondAttribute="centerY" id="2hJ-xb-4fC"/>
+                    <constraint firstAttribute="trailing" secondItem="fZC-BW-f2r" secondAttribute="trailing" id="9c7-11-0DL"/>
+                    <constraint firstItem="fZC-BW-f2r" firstAttribute="leading" secondItem="am2-zg-DeQ" secondAttribute="leading" id="tU8-g3-llh"/>
+                    <constraint firstItem="fZC-BW-f2r" firstAttribute="top" secondItem="am2-zg-DeQ" secondAttribute="top" id="tdl-aT-bbh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="datePicker" destination="fZC-BW-f2r" id="kti-g0-ODC"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
