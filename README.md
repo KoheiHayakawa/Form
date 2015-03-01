@@ -5,9 +5,11 @@
 [![Language](http://img.shields.io/badge/language-swift-brightgreen.svg?style=flat
 )](https://developer.apple.com/swift)
 
+###Screen Shots
 <img alt="Screen Shot 01" src="https://raw.githubusercontent.com/wiki/KoheiHayakawa/Form/images/screen_shot_01.png" width="200"/>
 <img alt="Screen Shot 02" src="https://raw.githubusercontent.com/wiki/KoheiHayakawa/Form/images/screen_shot_02.png" width="200"/>
 
+###How to use
 ```swift
 override func viewDidLoad() {
     super.viewDidLoad()
