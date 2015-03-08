@@ -24,7 +24,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             switch self {
             case .TextField:  return "textFieldCell"
             case .Segment:    return "segmentedControllerCell"
-            case .Switch:     return "switchCell"
+            case .Switch:     return "KHASwitchCell"
             case .DateStart:  return "dateCell"
             case .DateEnd:    return "dateCell"
             case .TextView:   return "textViewCell"
@@ -49,7 +49,6 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         let textFieldCell = UINib(nibName: "TextFieldTableViewCell", bundle: nil)
         let textViewCell = UINib(nibName: "TextViewTableViewCell", bundle: nil)
         let segmentedControllerCell = UINib(nibName: "SegmentedControllerTableViewCell", bundle: nil)
-        let switchCell = UINib(nibName: "SwitchTableViewCell", bundle: nil)
         let dateCell = UINib(nibName: "DateTableViewCell", bundle: nil)
         let datePickerCell = UINib(nibName: "DatePickerTableViewCell", bundle: nil)
         
@@ -57,9 +56,11 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         tableView.registerNib(textFieldCell, forCellReuseIdentifier: "textFieldCell")
         tableView.registerNib(textViewCell, forCellReuseIdentifier: "textViewCell")
         tableView.registerNib(segmentedControllerCell, forCellReuseIdentifier: "segmentedControllerCell")
-        tableView.registerNib(switchCell, forCellReuseIdentifier: "switchCell")
         tableView.registerNib(dateCell, forCellReuseIdentifier: "dateCell")
         tableView.registerNib(datePickerCell, forCellReuseIdentifier: "datePickerCell")
+        
+        tableView.registerClass(KHASwitchCell.self, forCellReuseIdentifier: KHASwitchCell.cellID)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -147,8 +148,6 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             (cell as TextFieldTableViewCell).textField.delegate = self
             cell.selectionStyle = .None;
         case RowType.Segment.cellId():
-            cell.selectionStyle = .None;
-        case RowType.Switch.cellId():
             cell.selectionStyle = .None;
         case RowType.TextView.cellId():
             (cell as TextViewTableViewCell).textView.delegate = self
