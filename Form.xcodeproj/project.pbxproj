@@ -32,6 +32,7 @@
 		5560CE361AAC178C002B01CC /* KHASegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE351AAC178C002B01CC /* KHASegmentedControlCell.swift */; };
 		5560CE381AAC20B1002B01CC /* KHATextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE371AAC20B1002B01CC /* KHATextFieldCell.swift */; };
 		5560CE3A1AAC2A47002B01CC /* KHADateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE391AAC2A47002B01CC /* KHADateCell.swift */; };
+		5560CE3C1AAC3309002B01CC /* KHADatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE3B1AAC3309002B01CC /* KHADatePickerCell.swift */; };
 		55D016CE1AABFAD600910B71 /* KHASwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D016CD1AABFAD600910B71 /* KHASwitchCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		5560CE351AAC178C002B01CC /* KHASegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHASegmentedControlCell.swift; path = SegmentedController/KHASegmentedControlCell.swift; sourceTree = "<group>"; };
 		5560CE371AAC20B1002B01CC /* KHATextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHATextFieldCell.swift; path = TextField/KHATextFieldCell.swift; sourceTree = "<group>"; };
 		5560CE391AAC2A47002B01CC /* KHADateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHADateCell.swift; path = Date/KHADateCell.swift; sourceTree = "<group>"; };
+		5560CE3B1AAC3309002B01CC /* KHADatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KHADatePickerCell.swift; sourceTree = "<group>"; };
 		55D016CD1AABFAD600910B71 /* KHASwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHASwitchCell.swift; path = Switch/KHASwitchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +224,7 @@
 			children = (
 				5528FBBA1A96677900D84E1A /* DatePickerTableViewCell.swift */,
 				5528FBBB1A96677900D84E1A /* DatePickerTableViewCell.xib */,
+				5560CE3B1AAC3309002B01CC /* KHADatePickerCell.swift */,
 			);
 			path = DatePicker;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			files = (
 				5528FBB41A9666AE00D84E1A /* SegmentedControllerTableViewCell.swift in Sources */,
 				5528FB871A9664D700D84E1A /* FormTableViewController.swift in Sources */,
+				5560CE3C1AAC3309002B01CC /* KHADatePickerCell.swift in Sources */,
 				5560CE3A1AAC2A47002B01CC /* KHADateCell.swift in Sources */,
 				5553C6121AA0740F00509111 /* SwitchTableViewCell.swift in Sources */,
 				5528FBB81A96674500D84E1A /* DateTableViewCell.swift in Sources */,

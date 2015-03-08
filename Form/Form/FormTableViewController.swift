@@ -15,9 +15,9 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         case SegmentedControl = "SegmentedControl"
         case Switch           = "Switch"
         case Date             = "Date"
+        case DatePicker       = "DatePicker"
         case TextView         = "TextView"
         case Button           = "Button"
-        case DatePicker       = "DatePicker"
         
         func cellId() -> String {
             switch self {
@@ -25,9 +25,9 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             case .SegmentedControl: return KHASegmentedControlCell.cellID
             case .Switch:           return KHASwitchCell.cellID
             case .Date:             return KHADateCell.cellID
+            case .DatePicker:       return KHADatePickerCell.cellID
             case .TextView:         return "textViewCell"
             case .Button:           return "buttonCell"
-            case .DatePicker:       return "datePickerCell"
             }
         }
     }
@@ -45,17 +45,15 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         // register custom table view cell
         let buttonCell = UINib(nibName: "ButtonTableViewCell", bundle: nil)
         let textViewCell = UINib(nibName: "TextViewTableViewCell", bundle: nil)
-        let datePickerCell = UINib(nibName: "DatePickerTableViewCell", bundle: nil)
         
         tableView.registerNib(buttonCell, forCellReuseIdentifier: "buttonCell")
         tableView.registerNib(textViewCell, forCellReuseIdentifier: "textViewCell")
-        tableView.registerNib(datePickerCell, forCellReuseIdentifier: "datePickerCell")
         
         tableView.registerClass(KHATextFieldCell.self, forCellReuseIdentifier: KHATextFieldCell.cellID)
         tableView.registerClass(KHASegmentedControlCell.self, forCellReuseIdentifier: KHASegmentedControlCell.cellID)
         tableView.registerClass(KHASwitchCell.self, forCellReuseIdentifier: KHASwitchCell.cellID)
         tableView.registerClass(KHADateCell.self, forCellReuseIdentifier: KHADateCell.cellID)
-
+        tableView.registerClass(KHADatePickerCell.self, forCellReuseIdentifier: KHADatePickerCell.cellID)
         
     }
 
@@ -149,7 +147,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             let dateStr = (cell as KHADateCell).detailTextLabel?.text
             (cell as KHADateCell).detailTextLabel?.text = trimmedDateStringFromDateString(dateStr!)
         case RowType.DatePicker.cellId():
-            (cell as DatePickerTableViewCell).datePicker.addTarget(self, action: Selector("didDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+            (cell as KHADatePickerCell).datePicker.addTarget(self, action: Selector("didDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         default:
             break // do nothing
         }
@@ -181,7 +179,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             if let associatedDatePickerCell = tableView.cellForRowAtIndexPath(indexPath) {
                 let cell = cells[indexPath.section][indexPath.row - 1] as KHADateCell
                 if let dateStr = cell.detailTextLabel?.text {
-                    (associatedDatePickerCell as DatePickerTableViewCell).datePicker.setDate(dateFromTrimmedDateString(dateStr), animated: false)
+                    (associatedDatePickerCell as KHADatePickerCell).datePicker.setDate(dateFromTrimmedDateString(dateStr), animated: false)
                 }
             }
         }
