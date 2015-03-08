@@ -22,11 +22,11 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         
         func cellId() -> String {
             switch self {
-            case .TextField:        return "KHATextFieldCell"
-            case .SegmentedControl: return "KHASegmentedControlCell"
-            case .Switch:           return "KHASwitchCell"
-            case .DateStart:        return "dateCell"
-            case .DateEnd:          return "dateCell"
+            case .TextField:        return KHATextFieldCell.cellID
+            case .SegmentedControl: return KHASegmentedControlCell.cellID
+            case .Switch:           return KHASwitchCell.cellID
+            case .DateStart:        return KHADateCell.cellID
+            case .DateEnd:          return KHADateCell.cellID
             case .TextView:         return "textViewCell"
             case .Button:           return "buttonCell"
             case .DatePicker:       return "datePickerCell"
@@ -47,17 +47,17 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         // register custom table view cell
         let buttonCell = UINib(nibName: "ButtonTableViewCell", bundle: nil)
         let textViewCell = UINib(nibName: "TextViewTableViewCell", bundle: nil)
-        let dateCell = UINib(nibName: "DateTableViewCell", bundle: nil)
         let datePickerCell = UINib(nibName: "DatePickerTableViewCell", bundle: nil)
         
         tableView.registerNib(buttonCell, forCellReuseIdentifier: "buttonCell")
         tableView.registerNib(textViewCell, forCellReuseIdentifier: "textViewCell")
-        tableView.registerNib(dateCell, forCellReuseIdentifier: "dateCell")
         tableView.registerNib(datePickerCell, forCellReuseIdentifier: "datePickerCell")
         
         tableView.registerClass(KHATextFieldCell.self, forCellReuseIdentifier: KHATextFieldCell.cellID)
         tableView.registerClass(KHASegmentedControlCell.self, forCellReuseIdentifier: KHASegmentedControlCell.cellID)
         tableView.registerClass(KHASwitchCell.self, forCellReuseIdentifier: KHASwitchCell.cellID)
+        tableView.registerClass(KHADateCell.self, forCellReuseIdentifier: KHADateCell.cellID)
+
         
     }
 
@@ -148,8 +148,8 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             (cell as TextViewTableViewCell).textView.delegate = self
             cell.selectionStyle = .None;
         case RowType.DateStart.cellId():
-            let dateStr = (cell as DateTableViewCell).detailTextLabel?.text
-            (cell as DateTableViewCell).detailTextLabel?.text = trimmedDateStringFromDateString(dateStr!)
+            let dateStr = (cell as KHADateCell).detailTextLabel?.text
+            (cell as KHADateCell).detailTextLabel?.text = trimmedDateStringFromDateString(dateStr!)
         case RowType.DatePicker.cellId():
             (cell as DatePickerTableViewCell).datePicker.addTarget(self, action: Selector("didDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         default:
@@ -181,7 +181,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
     private func updateDatePicker() {
         if let indexPath = datePickerIndexPath {
             if let associatedDatePickerCell = tableView.cellForRowAtIndexPath(indexPath) {
-                let cell = cells[indexPath.section][indexPath.row - 1] as DateTableViewCell
+                let cell = cells[indexPath.section][indexPath.row - 1] as KHADateCell
                 if let dateStr = cell.detailTextLabel?.text {
                     (associatedDatePickerCell as DatePickerTableViewCell).datePicker.setDate(dateFromTrimmedDateString(dateStr), animated: false)
                 }
@@ -295,11 +295,13 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             targetedCellIndexPath = NSIndexPath(forRow: datePickerIndexPath!.row - 1, inSection: datePickerIndexPath!.section)
         } else {
             // external date picker: update the current "selected" cell's date
+            // TODO: Bug fix
+            // If we select text field or text view while picker's value is changing, it's crashed.
             targetedCellIndexPath = tableView.indexPathForSelectedRow()!
         }
         
         // update the cell's date string
-        var cell = tableView.cellForRowAtIndexPath(targetedCellIndexPath!) as DateTableViewCell
+        var cell = tableView.cellForRowAtIndexPath(targetedCellIndexPath!) as KHADateCell
         let targetedDatePicker = sender
         cell.detailTextLabel?.text = trimmedDateStringFromDateString(targetedDatePicker.date.description)
     }

@@ -31,6 +31,7 @@
 		5553C6131AA0740F00509111 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5553C6111AA0740F00509111 /* SwitchTableViewCell.xib */; };
 		5560CE361AAC178C002B01CC /* KHASegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE351AAC178C002B01CC /* KHASegmentedControlCell.swift */; };
 		5560CE381AAC20B1002B01CC /* KHATextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE371AAC20B1002B01CC /* KHATextFieldCell.swift */; };
+		5560CE3A1AAC2A47002B01CC /* KHADateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE391AAC2A47002B01CC /* KHADateCell.swift */; };
 		55D016CE1AABFAD600910B71 /* KHASwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D016CD1AABFAD600910B71 /* KHASwitchCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +73,8 @@
 		5553C6101AA0740F00509111 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		5553C6111AA0740F00509111 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		5560CE351AAC178C002B01CC /* KHASegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHASegmentedControlCell.swift; path = SegmentedController/KHASegmentedControlCell.swift; sourceTree = "<group>"; };
-		5560CE371AAC20B1002B01CC /* KHATextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KHATextFieldCell.swift; sourceTree = "<group>"; };
+		5560CE371AAC20B1002B01CC /* KHATextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHATextFieldCell.swift; path = TextField/KHATextFieldCell.swift; sourceTree = "<group>"; };
+		5560CE391AAC2A47002B01CC /* KHADateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KHADateCell.swift; sourceTree = "<group>"; };
 		55D016CD1AABFAD600910B71 /* KHASwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHASwitchCell.swift; path = Switch/KHASwitchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,13 +156,14 @@
 		5528FBC31A96DA3A00D84E1A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				5560CE371AAC20B1002B01CC /* KHATextFieldCell.swift */,
 				55D016CD1AABFAD600910B71 /* KHASwitchCell.swift */,
 				5560CE351AAC178C002B01CC /* KHASegmentedControlCell.swift */,
 				5553C6191AA2B48400509111 /* DatePicker */,
 				5553C6181AA2B47500509111 /* Date */,
 				5553C6161AA2B44E00509111 /* TextView */,
-				5553C6151AA2B43800509111 /* TextField */,
 				5553C6141AA2B42B00509111 /* Button */,
+				5553C6151AA2B43800509111 /* TextField */,
 				5553C61A1AA2B4A300509111 /* Switch */,
 				5553C6171AA2B45B00509111 /* SegmentedController */,
 			);
@@ -181,7 +184,6 @@
 			children = (
 				5528FBAA1A9665A000D84E1A /* TextFieldTableViewCell.swift */,
 				5528FBAB1A9665A000D84E1A /* TextFieldTableViewCell.xib */,
-				5560CE371AAC20B1002B01CC /* KHATextFieldCell.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -210,6 +212,7 @@
 			children = (
 				5528FBB61A96674500D84E1A /* DateTableViewCell.swift */,
 				5528FBB71A96674500D84E1A /* DateTableViewCell.xib */,
+				5560CE391AAC2A47002B01CC /* KHADateCell.swift */,
 			);
 			path = Date;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			files = (
 				5528FBB41A9666AE00D84E1A /* SegmentedControllerTableViewCell.swift in Sources */,
 				5528FB871A9664D700D84E1A /* FormTableViewController.swift in Sources */,
+				5560CE3A1AAC2A47002B01CC /* KHADateCell.swift in Sources */,
 				5553C6121AA0740F00509111 /* SwitchTableViewCell.swift in Sources */,
 				5528FBB81A96674500D84E1A /* DateTableViewCell.swift in Sources */,
 				55D016CE1AABFAD600910B71 /* KHASwitchCell.swift in Sources */,
