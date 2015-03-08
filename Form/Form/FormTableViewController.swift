@@ -11,25 +11,25 @@ import UIKit
 class FormTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
     enum RowType: String {
-        case TextField  = "TextField"
-        case Segment    = "SegmentedController"
-        case Switch     = "Switch"
-        case DateStart  = "DateStart"
-        case DateEnd    = "DateEnd"
-        case TextView   = "TextView"
-        case Button     = "Button"
-        case DatePicker = "DatePicker"
+        case TextField        = "TextField"
+        case SegmentedControl = "SegmentedControl"
+        case Switch           = "Switch"
+        case DateStart        = "DateStart"
+        case DateEnd          = "DateEnd"
+        case TextView         = "TextView"
+        case Button           = "Button"
+        case DatePicker       = "DatePicker"
         
         func cellId() -> String {
             switch self {
-            case .TextField:  return "textFieldCell"
-            case .Segment:    return "segmentedControllerCell"
-            case .Switch:     return "KHASwitchCell"
-            case .DateStart:  return "dateCell"
-            case .DateEnd:    return "dateCell"
-            case .TextView:   return "textViewCell"
-            case .Button:     return "buttonCell"
-            case .DatePicker: return "datePickerCell"
+            case .TextField:        return "textFieldCell"
+            case .SegmentedControl: return "KHASegmentedControlCell"
+            case .Switch:           return "KHASwitchCell"
+            case .DateStart:        return "dateCell"
+            case .DateEnd:          return "dateCell"
+            case .TextView:         return "textViewCell"
+            case .Button:           return "buttonCell"
+            case .DatePicker:       return "datePickerCell"
             }
         }
     }
@@ -48,17 +48,16 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         let buttonCell = UINib(nibName: "ButtonTableViewCell", bundle: nil)
         let textFieldCell = UINib(nibName: "TextFieldTableViewCell", bundle: nil)
         let textViewCell = UINib(nibName: "TextViewTableViewCell", bundle: nil)
-        let segmentedControllerCell = UINib(nibName: "SegmentedControllerTableViewCell", bundle: nil)
         let dateCell = UINib(nibName: "DateTableViewCell", bundle: nil)
         let datePickerCell = UINib(nibName: "DatePickerTableViewCell", bundle: nil)
         
         tableView.registerNib(buttonCell, forCellReuseIdentifier: "buttonCell")
         tableView.registerNib(textFieldCell, forCellReuseIdentifier: "textFieldCell")
         tableView.registerNib(textViewCell, forCellReuseIdentifier: "textViewCell")
-        tableView.registerNib(segmentedControllerCell, forCellReuseIdentifier: "segmentedControllerCell")
         tableView.registerNib(dateCell, forCellReuseIdentifier: "dateCell")
         tableView.registerNib(datePickerCell, forCellReuseIdentifier: "datePickerCell")
         
+        tableView.registerClass(KHASegmentedControlCell.self, forCellReuseIdentifier: KHASegmentedControlCell.cellID)
         tableView.registerClass(KHASwitchCell.self, forCellReuseIdentifier: KHASwitchCell.cellID)
         
     }
@@ -146,8 +145,6 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         switch cell.reuseIdentifier! {
         case RowType.TextField.cellId():
             (cell as TextFieldTableViewCell).textField.delegate = self
-            cell.selectionStyle = .None;
-        case RowType.Segment.cellId():
             cell.selectionStyle = .None;
         case RowType.TextView.cellId():
             (cell as TextViewTableViewCell).textView.delegate = self

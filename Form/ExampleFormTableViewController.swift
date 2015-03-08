@@ -14,16 +14,20 @@ class ExampleFormTableViewController: FormTableViewController {
         super.viewDidLoad()
         
         // setup cells in form
-        let cell1 = cellForRowType(.TextField) as TextFieldTableViewCell
-        let cell2 = cellForRowType(.Segment)   as SegmentedControllerTableViewCell
-        let cell3 = cellForRowType(.Switch)    as KHASwitchCell
-        let cell4 = cellForRowType(.DateStart) as DateTableViewCell
-        let cell5 = cellForRowType(.DateEnd)   as DateTableViewCell
-        let cell6 = cellForRowType(.TextView)  as TextViewTableViewCell
-        let cell7 = cellForRowType(.Button)    as ButtonTableViewCell
-        let cell8 = cellForRowType(.Button)    as ButtonTableViewCell
+        let cell1 = cellForRowType(.TextField)        as TextFieldTableViewCell
+        let cell2 = cellForRowType(.SegmentedControl) as KHASegmentedControlCell
+        let cell3 = cellForRowType(.Switch)           as KHASwitchCell
+        let cell4 = cellForRowType(.DateStart)        as DateTableViewCell
+        let cell5 = cellForRowType(.DateEnd)          as DateTableViewCell
+        let cell6 = cellForRowType(.TextView)         as TextViewTableViewCell
+        let cell7 = cellForRowType(.Button)           as ButtonTableViewCell
+        let cell8 = cellForRowType(.Button)           as ButtonTableViewCell
 
         cell1.textField.text = "foo"
+        
+        cell2.segmentedControl.setTitle("foo", forSegmentAtIndex: 0)
+        cell2.segmentedControl.setTitle("bar", forSegmentAtIndex: 1)
+        cell2.segmentedControl.insertSegmentWithTitle("baz", atIndex: 2, animated: false) // Add segment
         
         cell4.detailTextLabel?.text = NSDate().description
         
@@ -55,8 +59,8 @@ class ExampleFormTableViewController: FormTableViewController {
         println(cell1.textField.text)
         
         // ...and second cell contains segmented controller, etc...
-        let cell2 = cellForIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as SegmentedControllerTableViewCell
-        println(cell2.segmentedControll.selectedSegmentIndex)
+        let cell2 = cellForIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as KHASegmentedControlCell
+        println(cell2.segmentedControl.selectedSegmentIndex)
         
         let cell3 = cellForIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as KHASwitchCell
         println(cell3.sswitch.on)
