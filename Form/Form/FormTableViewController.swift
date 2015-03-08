@@ -27,7 +27,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             case .Date:             return KHADateCell.cellID
             case .DatePicker:       return KHADatePickerCell.cellID
             case .TextView:         return KHATextViewCell.cellID
-            case .Button:           return "buttonCell"
+            case .Button:           return KHAButtonCell.cellID
             }
         }
     }
@@ -43,18 +43,13 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         super.viewDidLoad()
         
         // register custom table view cell
-        let buttonCell = UINib(nibName: "ButtonTableViewCell", bundle: nil)
-        
-        tableView.registerNib(buttonCell, forCellReuseIdentifier: "buttonCell")
-
-        
         tableView.registerClass(KHATextFieldCell.self, forCellReuseIdentifier: KHATextFieldCell.cellID)
         tableView.registerClass(KHASegmentedControlCell.self, forCellReuseIdentifier: KHASegmentedControlCell.cellID)
         tableView.registerClass(KHASwitchCell.self, forCellReuseIdentifier: KHASwitchCell.cellID)
         tableView.registerClass(KHADateCell.self, forCellReuseIdentifier: KHADateCell.cellID)
         tableView.registerClass(KHADatePickerCell.self, forCellReuseIdentifier: KHADatePickerCell.cellID)
         tableView.registerClass(KHATextViewCell.self, forCellReuseIdentifier: KHATextViewCell.cellID)
-
+        tableView.registerClass(KHAButtonCell.self, forCellReuseIdentifier: KHAButtonCell.cellID)
     }
 
     override func didReceiveMemoryWarning() {

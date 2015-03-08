@@ -34,6 +34,7 @@
 		5560CE3A1AAC2A47002B01CC /* KHADateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE391AAC2A47002B01CC /* KHADateCell.swift */; };
 		5560CE3C1AAC3309002B01CC /* KHADatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE3B1AAC3309002B01CC /* KHADatePickerCell.swift */; };
 		5560CE3E1AAC3923002B01CC /* KHATextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE3D1AAC3923002B01CC /* KHATextViewCell.swift */; };
+		5560CE401AAC46C0002B01CC /* KHAButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE3F1AAC46C0002B01CC /* KHAButtonCell.swift */; };
 		55D016CE1AABFAD600910B71 /* KHASwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D016CD1AABFAD600910B71 /* KHASwitchCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		5560CE391AAC2A47002B01CC /* KHADateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHADateCell.swift; path = Date/KHADateCell.swift; sourceTree = "<group>"; };
 		5560CE3B1AAC3309002B01CC /* KHADatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHADatePickerCell.swift; path = DatePicker/KHADatePickerCell.swift; sourceTree = "<group>"; };
 		5560CE3D1AAC3923002B01CC /* KHATextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHATextViewCell.swift; path = TextView/KHATextViewCell.swift; sourceTree = "<group>"; };
+		5560CE3F1AAC46C0002B01CC /* KHAButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHAButtonCell.swift; path = Button/KHAButtonCell.swift; sourceTree = "<group>"; };
 		55D016CD1AABFAD600910B71 /* KHASwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHASwitchCell.swift; path = Switch/KHASwitchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,13 +168,14 @@
 				5560CE391AAC2A47002B01CC /* KHADateCell.swift */,
 				5560CE3B1AAC3309002B01CC /* KHADatePickerCell.swift */,
 				5560CE3D1AAC3923002B01CC /* KHATextViewCell.swift */,
-				5553C6161AA2B44E00509111 /* TextView */,
+				5560CE3F1AAC46C0002B01CC /* KHAButtonCell.swift */,
 				5553C6141AA2B42B00509111 /* Button */,
 				5553C6151AA2B43800509111 /* TextField */,
 				5553C61A1AA2B4A300509111 /* Switch */,
 				5553C6171AA2B45B00509111 /* SegmentedController */,
 				5553C6181AA2B47500509111 /* Date */,
 				5553C6191AA2B48400509111 /* DatePicker */,
+				5553C6161AA2B44E00509111 /* TextView */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			files = (
 				5528FBB41A9666AE00D84E1A /* SegmentedControllerTableViewCell.swift in Sources */,
 				5528FB871A9664D700D84E1A /* FormTableViewController.swift in Sources */,
+				5560CE401AAC46C0002B01CC /* KHAButtonCell.swift in Sources */,
 				5560CE3C1AAC3309002B01CC /* KHADatePickerCell.swift in Sources */,
 				5560CE3A1AAC2A47002B01CC /* KHADateCell.swift in Sources */,
 				5553C6121AA0740F00509111 /* SwitchTableViewCell.swift in Sources */,

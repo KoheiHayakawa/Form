@@ -20,8 +20,8 @@ class ExampleFormTableViewController: FormTableViewController {
         let cell4 = cellForRowType(.Date)             as KHADateCell
         let cell5 = cellForRowType(.Date)             as KHADateCell
         let cell6 = cellForRowType(.TextView)         as KHATextViewCell
-        let cell7 = cellForRowType(.Button)           as ButtonTableViewCell
-        let cell8 = cellForRowType(.Button)           as ButtonTableViewCell
+        let cell7 = cellForRowType(.Button)           as KHAButtonCell
+        let cell8 = cellForRowType(.Button)           as KHAButtonCell
 
         cell1.textField.text = "foo"
         cell1.textField.placeholder = "placeholder"
