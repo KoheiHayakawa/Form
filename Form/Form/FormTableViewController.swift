@@ -26,7 +26,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             case .Switch:           return KHASwitchCell.cellID
             case .Date:             return KHADateCell.cellID
             case .DatePicker:       return KHADatePickerCell.cellID
-            case .TextView:         return "textViewCell"
+            case .TextView:         return KHATextViewCell.cellID
             case .Button:           return "buttonCell"
             }
         }
@@ -44,17 +44,17 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         
         // register custom table view cell
         let buttonCell = UINib(nibName: "ButtonTableViewCell", bundle: nil)
-        let textViewCell = UINib(nibName: "TextViewTableViewCell", bundle: nil)
         
         tableView.registerNib(buttonCell, forCellReuseIdentifier: "buttonCell")
-        tableView.registerNib(textViewCell, forCellReuseIdentifier: "textViewCell")
+
         
         tableView.registerClass(KHATextFieldCell.self, forCellReuseIdentifier: KHATextFieldCell.cellID)
         tableView.registerClass(KHASegmentedControlCell.self, forCellReuseIdentifier: KHASegmentedControlCell.cellID)
         tableView.registerClass(KHASwitchCell.self, forCellReuseIdentifier: KHASwitchCell.cellID)
         tableView.registerClass(KHADateCell.self, forCellReuseIdentifier: KHADateCell.cellID)
         tableView.registerClass(KHADatePickerCell.self, forCellReuseIdentifier: KHADatePickerCell.cellID)
-        
+        tableView.registerClass(KHATextViewCell.self, forCellReuseIdentifier: KHATextViewCell.cellID)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -141,7 +141,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         case RowType.TextField.cellId():
             (cell as KHATextFieldCell).textField.delegate = self
         case RowType.TextView.cellId():
-            (cell as TextViewTableViewCell).textView.delegate = self
+            (cell as KHATextViewCell).textView.delegate = self
             cell.selectionStyle = .None;
         case RowType.Date.cellId():
             let dateStr = (cell as KHADateCell).detailTextLabel?.text

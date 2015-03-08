@@ -19,11 +19,12 @@ class ExampleFormTableViewController: FormTableViewController {
         let cell3 = cellForRowType(.Switch)           as KHASwitchCell
         let cell4 = cellForRowType(.Date)             as KHADateCell
         let cell5 = cellForRowType(.Date)             as KHADateCell
-        let cell6 = cellForRowType(.TextView)         as TextViewTableViewCell
+        let cell6 = cellForRowType(.TextView)         as KHATextViewCell
         let cell7 = cellForRowType(.Button)           as ButtonTableViewCell
         let cell8 = cellForRowType(.Button)           as ButtonTableViewCell
 
         cell1.textField.text = "foo"
+        cell1.textField.placeholder = "placeholder"
         cell1.textField.clearButtonMode = UITextFieldViewMode.Always
         
         cell2.segmentedControl.setTitle("foo", forSegmentAtIndex: 0)
@@ -34,7 +35,7 @@ class ExampleFormTableViewController: FormTableViewController {
         
         cell5.detailTextLabel?.text = NSDate().description
 
-        cell6.textView.placeHolder = "placeholder"
+        cell6.textView.placeholder = "placeholder"
         
         cell7.button.setTitle("Delete", forState: .Normal)
         cell7.button.setTitleColor(UIColor.redColor(), forState: .Normal)

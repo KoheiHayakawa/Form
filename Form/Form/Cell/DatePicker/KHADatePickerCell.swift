@@ -11,7 +11,8 @@ import UIKit
 class KHADatePickerCell: UITableViewCell {
     
     let datePicker: UIDatePicker = UIDatePicker()
-    let kCellHeight: CGFloat = 216
+    
+    private let kCellHeight: CGFloat = 216
     
     class var cellID: String {
         return "KHADatePickerCell"
@@ -28,16 +29,6 @@ class KHADatePickerCell: UITableViewCell {
             y: super.frame.origin.y,
             width: super.frame.width,
             height: kCellHeight)
-        datePicker.setTranslatesAutoresizingMaskIntoConstraints(false)
         super.contentView.addSubview(datePicker)
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
 }

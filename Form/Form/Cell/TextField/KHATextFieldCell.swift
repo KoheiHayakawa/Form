@@ -56,14 +56,5 @@ class KHATextFieldCell: UITableViewCell {
                 multiplier: 1,
                 constant: 44)]
         )
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
+    }    
 }
