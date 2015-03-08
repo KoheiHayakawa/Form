@@ -22,7 +22,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         
         func cellId() -> String {
             switch self {
-            case .TextField:        return "textFieldCell"
+            case .TextField:        return "KHATextFieldCell"
             case .SegmentedControl: return "KHASegmentedControlCell"
             case .Switch:           return "KHASwitchCell"
             case .DateStart:        return "dateCell"
@@ -46,17 +46,16 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         
         // register custom table view cell
         let buttonCell = UINib(nibName: "ButtonTableViewCell", bundle: nil)
-        let textFieldCell = UINib(nibName: "TextFieldTableViewCell", bundle: nil)
         let textViewCell = UINib(nibName: "TextViewTableViewCell", bundle: nil)
         let dateCell = UINib(nibName: "DateTableViewCell", bundle: nil)
         let datePickerCell = UINib(nibName: "DatePickerTableViewCell", bundle: nil)
         
         tableView.registerNib(buttonCell, forCellReuseIdentifier: "buttonCell")
-        tableView.registerNib(textFieldCell, forCellReuseIdentifier: "textFieldCell")
         tableView.registerNib(textViewCell, forCellReuseIdentifier: "textViewCell")
         tableView.registerNib(dateCell, forCellReuseIdentifier: "dateCell")
         tableView.registerNib(datePickerCell, forCellReuseIdentifier: "datePickerCell")
         
+        tableView.registerClass(KHATextFieldCell.self, forCellReuseIdentifier: KHATextFieldCell.cellID)
         tableView.registerClass(KHASegmentedControlCell.self, forCellReuseIdentifier: KHASegmentedControlCell.cellID)
         tableView.registerClass(KHASwitchCell.self, forCellReuseIdentifier: KHASwitchCell.cellID)
         
@@ -144,8 +143,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         
         switch cell.reuseIdentifier! {
         case RowType.TextField.cellId():
-            (cell as TextFieldTableViewCell).textField.delegate = self
-            cell.selectionStyle = .None;
+            (cell as KHATextFieldCell).textField.delegate = self
         case RowType.TextView.cellId():
             (cell as TextViewTableViewCell).textView.delegate = self
             cell.selectionStyle = .None;

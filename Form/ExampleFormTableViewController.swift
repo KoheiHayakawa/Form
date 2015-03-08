@@ -14,7 +14,7 @@ class ExampleFormTableViewController: FormTableViewController {
         super.viewDidLoad()
         
         // setup cells in form
-        let cell1 = cellForRowType(.TextField)        as TextFieldTableViewCell
+        let cell1 = cellForRowType(.TextField)        as KHATextFieldCell
         let cell2 = cellForRowType(.SegmentedControl) as KHASegmentedControlCell
         let cell3 = cellForRowType(.Switch)           as KHASwitchCell
         let cell4 = cellForRowType(.DateStart)        as DateTableViewCell
@@ -24,6 +24,7 @@ class ExampleFormTableViewController: FormTableViewController {
         let cell8 = cellForRowType(.Button)           as ButtonTableViewCell
 
         cell1.textField.text = "foo"
+        cell1.textField.clearButtonMode = UITextFieldViewMode.Always
         
         cell2.segmentedControl.setTitle("foo", forSegmentAtIndex: 0)
         cell2.segmentedControl.setTitle("bar", forSegmentAtIndex: 1)
@@ -55,7 +56,7 @@ class ExampleFormTableViewController: FormTableViewController {
         println("delete")
         
         // We can access to the first cell contains text field...
-        let cell1 = cellForIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as TextFieldTableViewCell
+        let cell1 = cellForIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as KHATextFieldCell
         println(cell1.textField.text)
         
         // ...and second cell contains segmented controller, etc...
