@@ -14,8 +14,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         case TextField        = "TextField"
         case SegmentedControl = "SegmentedControl"
         case Switch           = "Switch"
-        case DateStart        = "DateStart"
-        case DateEnd          = "DateEnd"
+        case Date             = "Date"
         case TextView         = "TextView"
         case Button           = "Button"
         case DatePicker       = "DatePicker"
@@ -25,8 +24,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
             case .TextField:        return KHATextFieldCell.cellID
             case .SegmentedControl: return KHASegmentedControlCell.cellID
             case .Switch:           return KHASwitchCell.cellID
-            case .DateStart:        return KHADateCell.cellID
-            case .DateEnd:          return KHADateCell.cellID
+            case .Date:             return KHADateCell.cellID
             case .TextView:         return "textViewCell"
             case .Button:           return "buttonCell"
             case .DatePicker:       return "datePickerCell"
@@ -147,7 +145,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         case RowType.TextView.cellId():
             (cell as TextViewTableViewCell).textView.delegate = self
             cell.selectionStyle = .None;
-        case RowType.DateStart.cellId():
+        case RowType.Date.cellId():
             let dateStr = (cell as KHADateCell).detailTextLabel?.text
             (cell as KHADateCell).detailTextLabel?.text = trimmedDateStringFromDateString(dateStr!)
         case RowType.DatePicker.cellId():
@@ -165,7 +163,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        if cell?.reuseIdentifier == RowType.DateStart.cellId() || cell?.reuseIdentifier == RowType.DateEnd.cellId() {
+        if cell?.reuseIdentifier == RowType.Date.cellId() {
             displayInlineDatePickerForRowAtIndexPath(indexPath)
         } else {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -193,7 +191,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         let cellsAtSection = cells[section]
         for cell in cellsAtSection {
             let rowType = cell.reuseIdentifier
-            if (rowType == RowType.DateStart.cellId()) || (rowType == RowType.DateEnd.cellId()) {
+            if (rowType == RowType.Date.cellId()) {
                 return true
             }
         }

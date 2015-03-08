@@ -17,8 +17,8 @@ class ExampleFormTableViewController: FormTableViewController {
         let cell1 = cellForRowType(.TextField)        as KHATextFieldCell
         let cell2 = cellForRowType(.SegmentedControl) as KHASegmentedControlCell
         let cell3 = cellForRowType(.Switch)           as KHASwitchCell
-        let cell4 = cellForRowType(.DateStart)        as KHADateCell
-        let cell5 = cellForRowType(.DateEnd)          as KHADateCell
+        let cell4 = cellForRowType(.Date)             as KHADateCell
+        let cell5 = cellForRowType(.Date)             as KHADateCell
         let cell6 = cellForRowType(.TextView)         as TextViewTableViewCell
         let cell7 = cellForRowType(.Button)           as ButtonTableViewCell
         let cell8 = cellForRowType(.Button)           as ButtonTableViewCell

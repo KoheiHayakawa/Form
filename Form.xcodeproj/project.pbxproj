@@ -74,7 +74,7 @@
 		5553C6111AA0740F00509111 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		5560CE351AAC178C002B01CC /* KHASegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHASegmentedControlCell.swift; path = SegmentedController/KHASegmentedControlCell.swift; sourceTree = "<group>"; };
 		5560CE371AAC20B1002B01CC /* KHATextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHATextFieldCell.swift; path = TextField/KHATextFieldCell.swift; sourceTree = "<group>"; };
-		5560CE391AAC2A47002B01CC /* KHADateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KHADateCell.swift; sourceTree = "<group>"; };
+		5560CE391AAC2A47002B01CC /* KHADateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHADateCell.swift; path = Date/KHADateCell.swift; sourceTree = "<group>"; };
 		55D016CD1AABFAD600910B71 /* KHASwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHASwitchCell.swift; path = Switch/KHASwitchCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,13 +159,14 @@
 				5560CE371AAC20B1002B01CC /* KHATextFieldCell.swift */,
 				55D016CD1AABFAD600910B71 /* KHASwitchCell.swift */,
 				5560CE351AAC178C002B01CC /* KHASegmentedControlCell.swift */,
+				5560CE391AAC2A47002B01CC /* KHADateCell.swift */,
 				5553C6191AA2B48400509111 /* DatePicker */,
-				5553C6181AA2B47500509111 /* Date */,
 				5553C6161AA2B44E00509111 /* TextView */,
 				5553C6141AA2B42B00509111 /* Button */,
 				5553C6151AA2B43800509111 /* TextField */,
 				5553C61A1AA2B4A300509111 /* Switch */,
 				5553C6171AA2B45B00509111 /* SegmentedController */,
+				5553C6181AA2B47500509111 /* Date */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -212,7 +213,6 @@
 			children = (
 				5528FBB61A96674500D84E1A /* DateTableViewCell.swift */,
 				5528FBB71A96674500D84E1A /* DateTableViewCell.xib */,
-				5560CE391AAC2A47002B01CC /* KHADateCell.swift */,
 			);
 			path = Date;
 			sourceTree = "<group>";
