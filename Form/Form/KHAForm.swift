@@ -1,6 +1,6 @@
 //
-//  FormTableViewController.swift
-//  Form
+//  KHAForm.swift
+//  KHAForm
 //
 //  Created by Kohei Hayakawa on 2/20/15.
 //  Copyright (c) 2015 Kohei Hayakawa. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FormTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
+class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
     enum KHAFormCellType: Int {
         
