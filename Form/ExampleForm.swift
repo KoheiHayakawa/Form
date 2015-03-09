@@ -45,7 +45,7 @@ class ExampleForm: KHAForm {
         cell8.button.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         cell8.button.addTarget(self, action: Selector("pushedCancelButton:"), forControlEvents: UIControlEvents.TouchUpInside)
 
-        initFormWithCells([[cell1, cell2, cell3], [cell4, cell5], [cell6], [cell7, cell8]])
+        initFormWithCells([[cell1, cell2, cell3], [cell4], [cell6], [cell5, cell7, cell8]])
     }
 
     override func didReceiveMemoryWarning() {

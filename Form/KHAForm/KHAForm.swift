@@ -66,9 +66,19 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier(rowType.cellId()) as UITableViewCell
         return cell
     }
-    
+
     func cellForIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
-        return cells[indexPath.section][indexPath.row]
+        var before = false
+        if hasInlineDatePicker() {
+            before = (datePickerIndexPath?.row < indexPath.row) && (datePickerIndexPath?.section == indexPath.section)
+        }
+        let row = (before ? indexPath.row - 1 : indexPath.row)
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(KHAFormCellType.DatePicker.cellId()) as UITableViewCell
+        if !hasPickerAtIndexPath(indexPath) {
+            cell = cells[indexPath.section][row]
+        }
+        return cell
     }
     
     
@@ -98,18 +108,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     // MARK: - UITableViewDataSource
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        var before = false
-        if hasInlineDatePicker() {
-            before = (datePickerIndexPath?.row < indexPath.row) && (datePickerIndexPath?.section == indexPath.section)
-        }
-        let row = (before ? indexPath.row - 1 : indexPath.row)
-
-        var cell = tableView.dequeueReusableCellWithIdentifier(KHAFormCellType.DatePicker.cellId()) as UITableViewCell
-        if !hasPickerAtIndexPath(indexPath) {
-            cell = cells[indexPath.section][row]
-        }
-        
+        let cell = cellForIndexPath(indexPath)
         return cell.bounds.height
     }
     
@@ -127,12 +126,8 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
-        var cell = tableView.dequeueReusableCellWithIdentifier(KHAFormCellType.DatePicker.cellId()) as UITableViewCell
         
-        if !hasPickerAtIndexPath(indexPath) {
-            cell = cells[indexPath.section][indexPath.row]
-        }
+        var cell = cellForIndexPath(indexPath)
         
         switch cell.reuseIdentifier! {
         case KHAFormCellType.TextField.cellId():
