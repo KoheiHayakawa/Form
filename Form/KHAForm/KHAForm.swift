@@ -109,6 +109,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
         if !hasPickerAtIndexPath(indexPath) {
             cell = cells[indexPath.section][row]
         }
+        
         return cell.bounds.height
     }
     
@@ -118,7 +119,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if hasInlineDatePicker() && hasDateCellAtSection(section) {
+        if hasInlineDatePickerAtSection(section) {
             // we have a date picker, so allow for it in the number of rows in this section
             return cells[section].count + 1
         }
@@ -156,7 +157,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        
+
         if cell?.reuseIdentifier == KHAFormCellType.Date.cellId() {
             displayInlineDatePickerForRowAtIndexPath(indexPath)
         } else {
@@ -181,13 +182,9 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
         }
     }
     
-    private func hasDateCellAtSection(section: Int) -> Bool {
-        let cellsAtSection = cells[section]
-        for cell in cellsAtSection {
-            let rowType = cell.reuseIdentifier
-            if (rowType == KHAFormCellType.Date.cellId()) {
-                return true
-            }
+    private func hasInlineDatePickerAtSection(section: Int) -> Bool {
+        if hasInlineDatePicker() {
+            return datePickerIndexPath?.section == section
         }
         return false
     }
