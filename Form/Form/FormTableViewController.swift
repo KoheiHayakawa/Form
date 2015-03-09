@@ -10,14 +10,15 @@ import UIKit
 
 class FormTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
-    enum RowType: String {
-        case TextField        = "TextField"
-        case SegmentedControl = "SegmentedControl"
-        case Switch           = "Switch"
-        case Date             = "Date"
-        case DatePicker       = "DatePicker"
-        case TextView         = "TextView"
-        case Button           = "Button"
+    enum KHAFormCellType: Int {
+        
+        case TextField
+        case SegmentedControl
+        case Switch
+        case Date
+        case DatePicker
+        case TextView
+        case Button
         
         func cellId() -> String {
             switch self {
@@ -61,7 +62,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         self.cells = cells
     }
     
-    func cellForRowType(rowType: RowType) -> UITableViewCell {
+    func cellForRowType(rowType: KHAFormCellType) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(rowType.cellId()) as UITableViewCell
         return cell
     }
@@ -104,7 +105,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         }
         let row = (before ? indexPath.row - 1 : indexPath.row)
 
-        var cell = tableView.dequeueReusableCellWithIdentifier(RowType.DatePicker.cellId()) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(KHAFormCellType.DatePicker.cellId()) as UITableViewCell
         if !hasPickerAtIndexPath(indexPath) {
             cell = cells[indexPath.section][row]
         }
@@ -126,22 +127,22 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-        var cell = tableView.dequeueReusableCellWithIdentifier(RowType.DatePicker.cellId()) as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier(KHAFormCellType.DatePicker.cellId()) as UITableViewCell
         
         if !hasPickerAtIndexPath(indexPath) {
             cell = cells[indexPath.section][indexPath.row]
         }
         
         switch cell.reuseIdentifier! {
-        case RowType.TextField.cellId():
+        case KHAFormCellType.TextField.cellId():
             (cell as KHATextFieldCell).textField.delegate = self
-        case RowType.TextView.cellId():
+        case KHAFormCellType.TextView.cellId():
             (cell as KHATextViewCell).textView.delegate = self
             cell.selectionStyle = .None;
-        case RowType.Date.cellId():
+        case KHAFormCellType.Date.cellId():
             let dateStr = (cell as KHADateCell).detailTextLabel?.text
             (cell as KHADateCell).detailTextLabel?.text = trimmedDateStringFromDateString(dateStr!)
-        case RowType.DatePicker.cellId():
+        case KHAFormCellType.DatePicker.cellId():
             (cell as KHADatePickerCell).datePicker.addTarget(self, action: Selector("didDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         default:
             break // do nothing
@@ -156,7 +157,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        if cell?.reuseIdentifier == RowType.Date.cellId() {
+        if cell?.reuseIdentifier == KHAFormCellType.Date.cellId() {
             displayInlineDatePickerForRowAtIndexPath(indexPath)
         } else {
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -184,7 +185,7 @@ class FormTableViewController: UITableViewController, UITextFieldDelegate, UITex
         let cellsAtSection = cells[section]
         for cell in cellsAtSection {
             let rowType = cell.reuseIdentifier
-            if (rowType == RowType.Date.cellId()) {
+            if (rowType == KHAFormCellType.Date.cellId()) {
                 return true
             }
         }

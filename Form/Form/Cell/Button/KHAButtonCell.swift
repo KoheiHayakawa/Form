@@ -1,6 +1,6 @@
 //
 //  KHAButtonCell.swift
-//  Form
+//  KHAForm
 //
 //  Created by Kohei Hayakawa on 3/8/15.
 //  Copyright (c) 2015 Kohei Hayakawa. All rights reserved.

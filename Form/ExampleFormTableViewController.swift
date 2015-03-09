@@ -27,9 +27,9 @@ class ExampleFormTableViewController: FormTableViewController {
         cell1.textField.placeholder = "placeholder"
         cell1.textField.clearButtonMode = UITextFieldViewMode.Always
         
-        cell2.segmentedControl.setTitle("foo", forSegmentAtIndex: 0)
-        cell2.segmentedControl.setTitle("bar", forSegmentAtIndex: 1)
-        cell2.segmentedControl.insertSegmentWithTitle("baz", atIndex: 2, animated: false) // Add segment
+        cell2.segmentedControl.setTitle("First", forSegmentAtIndex: 0)
+        cell2.segmentedControl.setTitle("Second", forSegmentAtIndex: 1)
+        cell2.segmentedControl.insertSegmentWithTitle("Third", atIndex: 2, animated: false) // Add segment
         
         cell4.detailTextLabel?.text = NSDate().description
         
