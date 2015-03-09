@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExampleFormTableViewController: KHAForm {
+class ExampleForm: KHAForm {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -26,7 +26,7 @@
 		5528FBBC1A96677900D84E1A /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FBBA1A96677900D84E1A /* DatePickerTableViewCell.swift */; };
 		5528FBBD1A96677900D84E1A /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5528FBBB1A96677900D84E1A /* DatePickerTableViewCell.xib */; };
 		5528FBC21A96A33300D84E1A /* UIPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FBC11A96A33300D84E1A /* UIPlaceHolderTextView.swift */; };
-		5528FBF01A96E8FB00D84E1A /* ExampleFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FBEF1A96E8FB00D84E1A /* ExampleFormTableViewController.swift */; };
+		5528FBF01A96E8FB00D84E1A /* ExampleForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528FBEF1A96E8FB00D84E1A /* ExampleForm.swift */; };
 		5553C6121AA0740F00509111 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5553C6101AA0740F00509111 /* SwitchTableViewCell.swift */; };
 		5553C6131AA0740F00509111 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5553C6111AA0740F00509111 /* SwitchTableViewCell.xib */; };
 		5560CE361AAC178C002B01CC /* KHASegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5560CE351AAC178C002B01CC /* KHASegmentedControlCell.swift */; };
@@ -72,7 +72,7 @@
 		5528FBBA1A96677900D84E1A /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		5528FBBB1A96677900D84E1A /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		5528FBC11A96A33300D84E1A /* UIPlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPlaceHolderTextView.swift; sourceTree = "<group>"; };
-		5528FBEF1A96E8FB00D84E1A /* ExampleFormTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleFormTableViewController.swift; sourceTree = "<group>"; };
+		5528FBEF1A96E8FB00D84E1A /* ExampleForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleForm.swift; sourceTree = "<group>"; };
 		5553C6101AA0740F00509111 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		5553C6111AA0740F00509111 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		5560CE351AAC178C002B01CC /* KHASegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KHASegmentedControlCell.swift; path = SegmentedController/KHASegmentedControlCell.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				5528FB841A9664D700D84E1A /* AppDelegate.swift */,
-				5528FBEF1A96E8FB00D84E1A /* ExampleFormTableViewController.swift */,
+				5528FBEF1A96E8FB00D84E1A /* ExampleForm.swift */,
 				5528FB8A1A9664D700D84E1A /* Main.storyboard */,
 				5553C61B1AA2B4BB00509111 /* Form */,
 				5528FB8D1A9664D700D84E1A /* Images.xcassets */,
@@ -372,7 +372,7 @@
 				5560CE3E1AAC3923002B01CC /* KHATextViewCell.swift in Sources */,
 				5560CE361AAC178C002B01CC /* KHASegmentedControlCell.swift in Sources */,
 				5528FBA81A96651A00D84E1A /* ButtonTableViewCell.swift in Sources */,
-				5528FBF01A96E8FB00D84E1A /* ExampleFormTableViewController.swift in Sources */,
+				5528FBF01A96E8FB00D84E1A /* ExampleForm.swift in Sources */,
 				5528FBAC1A9665A100D84E1A /* TextFieldTableViewCell.swift in Sources */,
 				5560CE381AAC20B1002B01CC /* KHATextFieldCell.swift in Sources */,
 				5528FBB01A96661000D84E1A /* TextViewTableViewCell.swift in Sources */,
