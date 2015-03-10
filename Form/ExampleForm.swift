@@ -39,13 +39,13 @@ class ExampleForm: KHAForm {
         
         cell7.button.setTitle("Delete", forState: .Normal)
         cell7.button.setTitleColor(UIColor.redColor(), forState: .Normal)
-        cell7.button.addTarget(self, action: Selector("pushedDeleteButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell7.button.addTarget(self, action: Selector("didPressedDeleteButton:"), forControlEvents: UIControlEvents.TouchUpInside)
 
         cell8.button.setTitle("Cancel", forState: .Normal)
         cell8.button.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
-        cell8.button.addTarget(self, action: Selector("pushedCancelButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+        cell8.button.addTarget(self, action: Selector("didPressedCancelButton:"), forControlEvents: UIControlEvents.TouchUpInside)
 
-        initFormWithCells([[cell1, cell2, cell3], [cell4], [cell6], [cell5, cell7, cell8]])
+        initFormWithCells([[cell1, cell2, cell3], [cell4, cell5], [cell6], [cell7, cell8]])
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +53,7 @@ class ExampleForm: KHAForm {
         // Dispose of any resources that can be recreated.
     }
 
-    func pushedDeleteButton(sender: UIButton) {
+    func didPressedDeleteButton(sender: UIButton) {
         println("delete")
         
         // We can access to the first cell contains text field...
@@ -68,7 +68,7 @@ class ExampleForm: KHAForm {
         println(cell3.sswitch.on)
     }
     
-    func pushedCancelButton(sender: UIButton) {
+    func didPressedCancelButton(sender: UIButton) {
         println("cancel")
     }
 
