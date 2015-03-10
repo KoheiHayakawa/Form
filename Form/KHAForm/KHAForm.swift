@@ -39,10 +39,14 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
     
     private var cells:[[KHAFormCell]] = [[]]
     private var datePickerIndexPath: NSIndexPath?
-
+    
+    convenience override init() {
+        self.init(style: .Grouped)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // register custom table view cell
         tableView.registerClass(KHATextFieldFormCell.self, forCellReuseIdentifier: KHATextFieldFormCell.cellID)
         tableView.registerClass(KHASegmentedControlFormCell.self, forCellReuseIdentifier: KHASegmentedControlFormCell.cellID)
@@ -51,7 +55,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
         tableView.registerClass(KHADatePickerFormCell.self, forCellReuseIdentifier: KHADatePickerFormCell.cellID)
         tableView.registerClass(KHATextViewFormCell.self, forCellReuseIdentifier: KHATextViewFormCell.cellID)
         tableView.registerClass(KHAButtonFormCell.self, forCellReuseIdentifier: KHAButtonFormCell.cellID)
-        
+
         cells = cellsInForm(self)
     }
 
