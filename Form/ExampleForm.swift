@@ -31,9 +31,9 @@ class ExampleForm: KHAForm {
         cell2.segmentedControl.setTitle("Second", forSegmentAtIndex: 1)
         cell2.segmentedControl.insertSegmentWithTitle("Third", atIndex: 2, animated: false) // Add segment
         
-        cell4.detailTextLabel?.text = NSDate().description
+        cell4.date = NSDate()
         
-        cell5.detailTextLabel?.text = NSDate().description
+        cell5.date = NSDate()
 
         cell6.textView.placeholder = "placeholder"
         
@@ -66,6 +66,9 @@ class ExampleForm: KHAForm {
         
         let cell3 = cellForIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as KHASwitchCell
         println(cell3.sswitch.on)
+        
+        let cell4 = cellForIndexPath(NSIndexPath(forItem: 0, inSection: 1)) as KHADateCell
+        println(cell4.date)
     }
     
     func didPressedCancelButton(sender: UIButton) {

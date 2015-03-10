@@ -35,10 +35,6 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
     private var cells:[[UITableViewCell]] = []
     private var datePickerIndexPath: NSIndexPath?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +49,6 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
         tableView.registerClass(KHAButtonCell.self, forCellReuseIdentifier: KHAButtonCell.cellID)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func initFormWithCells(cells: [[UITableViewCell]]) {
         self.cells = cells
     }
@@ -79,29 +70,6 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
             cell = cells[indexPath.section][row]
         }
         return cell
-    }
-    
-    
-    // MARK: Utility
-    
-    private func trimmedDateStringFromDateString(string:String) -> String {
-        let df1 = NSDateFormatter()
-        df1.dateFormat = "yyyy-MM-dd HH:mm:SS z"
-        if let date = df1.dateFromString(string) {
-            let df2 = NSDateFormatter()
-            df2.dateStyle = .ShortStyle
-            df2.timeStyle = .ShortStyle
-            return df2.stringFromDate(date)
-        } else {
-            return string
-        }
-    }
-    
-    private func dateFromTrimmedDateString(string:String) -> NSDate {
-        let df = NSDateFormatter()
-        df.dateStyle = .ShortStyle
-        df.timeStyle = .ShortStyle
-        return df.dateFromString(string)!
     }
     
 
@@ -135,9 +103,6 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
         case KHAFormCellType.TextView.cellId():
             (cell as KHATextViewCell).textView.delegate = self
             cell.selectionStyle = .None;
-        case KHAFormCellType.Date.cellId():
-            let dateStr = (cell as KHADateCell).detailTextLabel?.text
-            (cell as KHADateCell).detailTextLabel?.text = trimmedDateStringFromDateString(dateStr!)
         case KHAFormCellType.DatePicker.cellId():
             (cell as KHADatePickerCell).datePicker.addTarget(self, action: Selector("didDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         default:
@@ -170,8 +135,8 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
         if let indexPath = datePickerIndexPath {
             if let associatedDatePickerCell = tableView.cellForRowAtIndexPath(indexPath) {
                 let cell = cells[indexPath.section][indexPath.row - 1] as KHADateCell
-                if let dateStr = cell.detailTextLabel?.text {
-                    (associatedDatePickerCell as KHADatePickerCell).datePicker.setDate(dateFromTrimmedDateString(dateStr), animated: false)
+                if let date = cell.date {
+                    (associatedDatePickerCell as KHADatePickerCell).datePicker.setDate(date, animated: false)
                 }
             }
         }
@@ -264,8 +229,6 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
         }
     }
     
-    // MARK: - Action
-
     /*! User chose to change the date by changing the values inside the UIDatePicker.
     
     @param sender The sender for this action: UIDatePicker.
@@ -287,7 +250,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
         // update the cell's date string
         var cell = tableView.cellForRowAtIndexPath(targetedCellIndexPath!) as KHADateCell
         let targetedDatePicker = sender
-        cell.detailTextLabel?.text = trimmedDateStringFromDateString(targetedDatePicker.date.description)
+        cell.date = targetedDatePicker.date
     }
     
     // MARK: - Delegate
@@ -300,4 +263,3 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
         removeAnyDatePickerCell()
     }
 }
-

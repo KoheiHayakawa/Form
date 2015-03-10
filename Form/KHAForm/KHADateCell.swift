@@ -10,6 +10,16 @@ import UIKit
 
 class KHADateCell: UITableViewCell {
     
+    var date: NSDate? {
+        willSet {
+            if let newValue = newValue {
+                super.detailTextLabel?.text = dateFotmatter.stringFromDate(newValue)
+            }
+        }
+    }
+    
+    private var dateFotmatter = NSDateFormatter()
+    
     class var cellID: String {
         return "KHADateCell"
     }
@@ -22,5 +32,7 @@ class KHADateCell: UITableViewCell {
         super.init(style: .Value1, reuseIdentifier: reuseIdentifier)
         super.textLabel?.text = "Label"
         super.detailTextLabel?.text = "Date"
+        dateFotmatter.dateStyle = .ShortStyle
+        dateFotmatter.timeStyle = .ShortStyle
     }
 }
