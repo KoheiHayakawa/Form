@@ -20,42 +20,42 @@ enum KHAFormCellType: Int {
     
     private func cellId() -> String {
         switch self {
-        case .TextField:        return KHATextFieldCell.cellID
-        case .SegmentedControl: return KHASegmentedControlCell.cellID
-        case .Switch:           return KHASwitchCell.cellID
-        case .Date:             return KHADateCell.cellID
-        case .DatePicker:       return KHADatePickerCell.cellID
-        case .TextView:         return KHATextViewCell.cellID
-        case .Button:           return KHAButtonCell.cellID
+        case .TextField:        return KHATextFieldFormCell.cellID
+        case .SegmentedControl: return KHASegmentedControlFormCell.cellID
+        case .Switch:           return KHASwitchFormCell.cellID
+        case .Date:             return KHADateFormCell.cellID
+        case .DatePicker:       return KHADatePickerFormCell.cellID
+        case .TextView:         return KHATextViewFormCell.cellID
+        case .Button:           return KHAButtonFormCell.cellID
         }
     }
 }
 
 protocol KHAFormDataSource {
-    func cellsInForm(form: KHAForm) -> [[UITableViewCell]]
+    func cellsInForm(form: KHAForm) -> [[KHAFormCell]]
 }
 
 class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, KHAFormDataSource {
     
-    private var cells:[[UITableViewCell]] = []
+    private var cells:[[KHAFormCell]] = [[]]
     private var datePickerIndexPath: NSIndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // register custom table view cell
-        tableView.registerClass(KHATextFieldCell.self, forCellReuseIdentifier: KHATextFieldCell.cellID)
-        tableView.registerClass(KHASegmentedControlCell.self, forCellReuseIdentifier: KHASegmentedControlCell.cellID)
-        tableView.registerClass(KHASwitchCell.self, forCellReuseIdentifier: KHASwitchCell.cellID)
-        tableView.registerClass(KHADateCell.self, forCellReuseIdentifier: KHADateCell.cellID)
-        tableView.registerClass(KHADatePickerCell.self, forCellReuseIdentifier: KHADatePickerCell.cellID)
-        tableView.registerClass(KHATextViewCell.self, forCellReuseIdentifier: KHATextViewCell.cellID)
-        tableView.registerClass(KHAButtonCell.self, forCellReuseIdentifier: KHAButtonCell.cellID)
+        tableView.registerClass(KHATextFieldFormCell.self, forCellReuseIdentifier: KHATextFieldFormCell.cellID)
+        tableView.registerClass(KHASegmentedControlFormCell.self, forCellReuseIdentifier: KHASegmentedControlFormCell.cellID)
+        tableView.registerClass(KHASwitchFormCell.self, forCellReuseIdentifier: KHASwitchFormCell.cellID)
+        tableView.registerClass(KHADateFormCell.self, forCellReuseIdentifier: KHADateFormCell.cellID)
+        tableView.registerClass(KHADatePickerFormCell.self, forCellReuseIdentifier: KHADatePickerFormCell.cellID)
+        tableView.registerClass(KHATextViewFormCell.self, forCellReuseIdentifier: KHATextViewFormCell.cellID)
+        tableView.registerClass(KHAButtonFormCell.self, forCellReuseIdentifier: KHAButtonFormCell.cellID)
         
         cells = cellsInForm(self)
     }
 
-    func cellsInForm(form: KHAForm) -> [[UITableViewCell]] {
+    func cellsInForm(form: KHAForm) -> [[KHAFormCell]] {
         // We should override
         return  [[]]
     }
@@ -106,12 +106,12 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
         
         switch cell.reuseIdentifier! {
         case KHAFormCellType.TextField.cellId():
-            (cell as KHATextFieldCell).textField.delegate = self
+            (cell as KHATextFieldFormCell).textField.delegate = self
         case KHAFormCellType.TextView.cellId():
-            (cell as KHATextViewCell).textView.delegate = self
+            (cell as KHATextViewFormCell).textView.delegate = self
             cell.selectionStyle = .None;
         case KHAFormCellType.DatePicker.cellId():
-            (cell as KHADatePickerCell).datePicker.addTarget(self, action: Selector("didDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+            (cell as KHADatePickerFormCell).datePicker.addTarget(self, action: Selector("didDatePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
         default:
             break // do nothing
         }
@@ -141,9 +141,9 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
     private func updateDatePicker() {
         if let indexPath = datePickerIndexPath {
             if let associatedDatePickerCell = tableView.cellForRowAtIndexPath(indexPath) {
-                let cell = cells[indexPath.section][indexPath.row - 1] as KHADateCell
+                let cell = cells[indexPath.section][indexPath.row - 1] as KHADateFormCell
                 if let date = cell.date {
-                    (associatedDatePickerCell as KHADatePickerCell).datePicker.setDate(date, animated: false)
+                    (associatedDatePickerCell as KHADatePickerFormCell).datePicker.setDate(date, animated: false)
                 }
             }
         }
@@ -255,7 +255,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
         }
         
         // update the cell's date string
-        var cell = tableView.cellForRowAtIndexPath(targetedCellIndexPath!) as KHADateCell
+        var cell = tableView.cellForRowAtIndexPath(targetedCellIndexPath!) as KHADateFormCell
         let targetedDatePicker = sender
         cell.date = targetedDatePicker.date
     }

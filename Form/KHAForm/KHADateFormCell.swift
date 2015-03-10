@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KHADateCell: UITableViewCell {
+class KHADateFormCell: KHAFormCell {
     
     var date: NSDate? {
         willSet {
@@ -22,10 +22,6 @@ class KHADateCell: UITableViewCell {
     
     class var cellID: String {
         return "KHADateCell"
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

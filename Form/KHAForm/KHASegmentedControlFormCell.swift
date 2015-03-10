@@ -8,16 +8,12 @@
 
 import UIKit
 
-class KHASegmentedControlCell: UITableViewCell {
+class KHASegmentedControlFormCell: KHAFormCell {
     
     let segmentedControl: UISegmentedControl = UISegmentedControl()
     
     class var cellID: String {
         return "KHASegmentedControlCell"
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
