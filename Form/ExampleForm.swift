@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExampleForm: KHAForm {
+class ExampleForm: KHAForm { // Implement subclass of KHAForm
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,9 +19,10 @@ class ExampleForm: KHAForm {
         // Dispose of any resources that can be recreated.
     }
     
+    // override a method to determine form structure
     override func formCellsInForm(form: KHAForm) -> [[KHAFormCell]] {
         
-        // setup cells in form
+        // setup cells
         let cell1 = initFormCellWithType(.TextField)        as KHATextFieldFormCell
         let cell2 = initFormCellWithType(.SegmentedControl) as KHASegmentedControlFormCell
         let cell3 = initFormCellWithType(.Switch)           as KHASwitchFormCell
@@ -31,7 +32,8 @@ class ExampleForm: KHAForm {
         let cell7 = initFormCellWithType(.Button)           as KHAButtonFormCell
         let cell8 = initFormCellWithType(.Button)           as KHAButtonFormCell
         
-        cell1.textField.text = "foo"
+        // settings for each cell
+        cell1.textField.text = "Title"
         cell1.textField.placeholder = "placeholder"
         cell1.textField.clearButtonMode = UITextFieldViewMode.Always
         
@@ -43,7 +45,7 @@ class ExampleForm: KHAForm {
         
         cell5.date = NSDate()
         
-        cell6.textView.placeholder = "placeholder"
+        cell6.textView.placeholder = "placeholder" // We can add placeholder on textview
         
         cell7.button.setTitle("Delete", forState: .Normal)
         cell7.button.setTitleColor(UIColor.redColor(), forState: .Normal)
@@ -53,6 +55,8 @@ class ExampleForm: KHAForm {
         cell8.button.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         cell8.button.addTarget(self, action: Selector("didPressedCancelButton:"), forControlEvents: UIControlEvents.TouchUpInside)
         
+        // Form structure is determined by using two-dimensional array.
+        // First index determines section and second index determines row.
         return [[cell1, cell2, cell3], [cell4, cell5], [cell6], [cell7, cell8]]
     }
 
