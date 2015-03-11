@@ -11,51 +11,71 @@
 
 ###How to use
 ```swift
-override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    // setup cells in form
-    let cell1 = cellForRowType(.TextField) as TextFieldTableViewCell
-    let cell2 = cellForRowType(.Segment)   as SegmentedControllerTableViewCell
-    let cell3 = cellForRowType(.Switch)    as SwitchTableViewCell
-    let cell4 = cellForRowType(.DateStart) as DateTableViewCell
-    let cell5 = cellForRowType(.DateEnd)   as DateTableViewCell
-    let cell6 = cellForRowType(.TextView)  as TextViewTableViewCell
-    let cell7 = cellForRowType(.Button)    as ButtonTableViewCell
-    let cell8 = cellForRowType(.Button)    as ButtonTableViewCell
-    
-    cell1.textField.text = "foo"
-    
-    cell4.detailTextLabel?.text = NSDate().description
-    
-    cell5.detailTextLabel?.text = NSDate().description
+import UIKit
 
-    cell6.textView.placeHolder = "placeholder"
-    
-    cell7.button.setTitle("Delete", forState: .Normal)
-    cell7.button.setTitleColor(UIColor.redColor(), forState: .Normal)
-    cell7.button.addTarget(self, action: Selector("pushedDeleteButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+class ExampleForm: KHAForm { // Implement subclass of KHAForm
 
-    cell8.button.setTitle("Cancel", forState: .Normal)
-    cell8.button.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
-    cell8.button.addTarget(self, action: Selector("pushedCancelButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+    // override a method to determine form structure
+    override func formCellsInForm(form: KHAForm) -> [[KHAFormCell]] {
+        
+        // setup cells
+        let cell1 = initFormCellWithType(.TextField)        as KHATextFieldFormCell
+        let cell2 = initFormCellWithType(.SegmentedControl) as KHASegmentedControlFormCell
+        let cell3 = initFormCellWithType(.Switch)           as KHASwitchFormCell
+        let cell4 = initFormCellWithType(.Date)             as KHADateFormCell
+        let cell5 = initFormCellWithType(.Date)             as KHADateFormCell
+        let cell6 = initFormCellWithType(.TextView)         as KHATextViewFormCell
+        let cell7 = initFormCellWithType(.Button)           as KHAButtonFormCell
+        let cell8 = initFormCellWithType(.Button)           as KHAButtonFormCell
+        
+        // settings for each cell
+        cell1.textField.text = "Title"
+        cell1.textField.placeholder = "placeholder"
+        cell1.textField.clearButtonMode = UITextFieldViewMode.Always
+        
+        cell2.segmentedControl.setTitle("First", forSegmentAtIndex: 0)
+        cell2.segmentedControl.setTitle("Second", forSegmentAtIndex: 1)
+        cell2.segmentedControl.insertSegmentWithTitle("Third", atIndex: 2, animated: false) // Add segment
+        
+        cell4.date = NSDate()
+        
+        cell5.date = NSDate()
+        
+        cell6.textView.placeholder = "placeholder" // We can add placeholder on textview
+        
+        cell7.button.setTitle("Delete", forState: .Normal)
+        cell7.button.setTitleColor(UIColor.redColor(), forState: .Normal)
+        cell7.button.addTarget(self, action: Selector("didPressedDeleteButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        cell8.button.setTitle("Cancel", forState: .Normal)
+        cell8.button.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+        cell8.button.addTarget(self, action: Selector("didPressedCancelButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        // Form structure is determined by using two-dimensional array.
+        // First index determines section and second index determines row.
+        return [[cell1, cell2, cell3], [cell4, cell5], [cell6], [cell7, cell8]]
+    }
 
-    initFormWithCells([[cell1, cell2, cell3], [cell4, cell5], [cell6], [cell7, cell8]])
-}
-
-func pushedDeleteButton(sender: UIButton) {
-    println("delete")
+    func didPressedDeleteButton(sender: UIButton) {
+        println("delete")
+        
+        // We can access to the first cell contains text field...
+        let cell1 = formCellForIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as KHATextFieldFormCell
+        println(cell1.textField.text)
+        
+        // ...and second cell contains segmented controller, etc...
+        let cell2 = formCellForIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as KHASegmentedControlFormCell
+        println(cell2.segmentedControl.selectedSegmentIndex)
+        
+        let cell3 = formCellForIndexPath(NSIndexPath(forRow: 2, inSection: 0)) as KHASwitchFormCell
+        println(cell3.sswitch.on)
+        
+        let cell4 = formCellForIndexPath(NSIndexPath(forItem: 0, inSection: 1)) as KHADateFormCell
+        println(cell4.date)
+    }
     
-    // We can access to the first cell contains text field...
-    let cell1 = cellForIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as TextFieldTableViewCell
-    println(cell1.textField.text)
-    
-    // ...and second cell contains segmented controller, etc...
-    let cell2 = cellForIndexPath(NSIndexPath(forRow: 1, inSection: 0)) as SegmentedControllerTableViewCell
-    println(cell2.segmentedControll.selectedSegmentIndex)
-}
-    
-func pushedCancelButton(sender: UIButton) {
-    println("cancel")
+    func didPressedCancelButton(sender: UIButton) {
+        println("cancel")
+    }
 }
 ```
