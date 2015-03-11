@@ -32,7 +32,7 @@ enum KHAFormCellType: Int {
 }
 
 protocol KHAFormDataSource {
-    func cellsInForm(form: KHAForm) -> [[KHAFormCell]]
+    func formCellsInForm(form: KHAForm) -> [[KHAFormCell]]
 }
 
 class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, KHAFormDataSource {
@@ -40,6 +40,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
     private var cells:[[KHAFormCell]] = [[]]
     private var datePickerIndexPath: NSIndexPath?
     
+    // Form is always grouped tableview
     convenience override init() {
         self.init(style: .Grouped)
     }
@@ -47,7 +48,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // register custom table view cell
+        // register cells
         tableView.registerClass(KHATextFieldFormCell.self, forCellReuseIdentifier: KHATextFieldFormCell.cellID)
         tableView.registerClass(KHASegmentedControlFormCell.self, forCellReuseIdentifier: KHASegmentedControlFormCell.cellID)
         tableView.registerClass(KHASwitchFormCell.self, forCellReuseIdentifier: KHASwitchFormCell.cellID)
@@ -56,20 +57,24 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
         tableView.registerClass(KHATextViewFormCell.self, forCellReuseIdentifier: KHATextViewFormCell.cellID)
         tableView.registerClass(KHAButtonFormCell.self, forCellReuseIdentifier: KHAButtonFormCell.cellID)
 
-        cells = cellsInForm(self)
-    }
-
-    func cellsInForm(form: KHAForm) -> [[KHAFormCell]] {
-        // We should override
-        return  [[]]
+        // init form structure
+        cells = formCellsInForm(self)
     }
     
-    func cellForType(type: KHAFormCellType) -> UITableViewCell {
+    /*! Determine form structure by using two-dimensional array.
+        First index determines section and second index determines row.
+        This method must be overridden in subclass.
+    */
+    func formCellsInForm(form: KHAForm) -> [[KHAFormCell]] {
+        return  [[]]
+    }
+
+    func initFormCellWithType(type: KHAFormCellType) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(type.cellId()) as UITableViewCell
         return cell
     }
 
-    func cellForIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
+    func formCellForIndexPath(indexPath: NSIndexPath) -> UITableViewCell {
         var before = false
         if hasInlineDatePicker() {
             before = (datePickerIndexPath?.row < indexPath.row) && (datePickerIndexPath?.section == indexPath.section)
@@ -87,7 +92,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
     // MARK: - UITableViewDataSource
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cell = cellForIndexPath(indexPath)
+        let cell = formCellForIndexPath(indexPath)
         return cell.bounds.height
     }
     
@@ -106,7 +111,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = cellForIndexPath(indexPath)
+        var cell = formCellForIndexPath(indexPath)
         
         switch cell.reuseIdentifier! {
         case KHAFormCellType.TextField.cellId():
@@ -241,8 +246,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
     }
     
     /*! User chose to change the date by changing the values inside the UIDatePicker.
-    
-    @param sender The sender for this action: UIDatePicker.
+        @param sender The sender for this action: UIDatePicker.
     */
     func didDatePickerValueChanged(sender: UIDatePicker) {
         
