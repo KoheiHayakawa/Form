@@ -257,15 +257,17 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
             targetedCellIndexPath = NSIndexPath(forRow: datePickerIndexPath!.row - 1, inSection: datePickerIndexPath!.section)
         } else {
             // external date picker: update the current "selected" cell's date
-            // TODO: Bug fix
-            // If we select text field or text view while picker's value is changing, it's crashed.
-            targetedCellIndexPath = tableView.indexPathForSelectedRow()!
+            if let selectedIndexPath = tableView.indexPathForSelectedRow() {
+                targetedCellIndexPath = selectedIndexPath
+            }
         }
         
         // update the cell's date string
-        var cell = tableView.cellForRowAtIndexPath(targetedCellIndexPath!) as KHADateFormCell
-        let targetedDatePicker = sender
-        cell.date = targetedDatePicker.date
+        if let selectedIndexPath = targetedCellIndexPath {
+            var cell = tableView.cellForRowAtIndexPath(targetedCellIndexPath!) as KHADateFormCell
+            let targetedDatePicker = sender
+            cell.date = targetedDatePicker.date
+        }
     }
     
     
