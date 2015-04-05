@@ -66,7 +66,7 @@ class KHAForm: UITableViewController, UITextFieldDelegate, UITextViewDelegate, K
         This method must be overridden in subclass.
     */
     func formCellsInForm(form: KHAForm) -> [[KHAFormCell]] {
-        return  [[]]
+        return  cells
     }
 
     func initFormCellWithType(type: KHAFormCellType) -> UITableViewCell {
